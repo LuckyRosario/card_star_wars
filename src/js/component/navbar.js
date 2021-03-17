@@ -1,15 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
+import "../../styles/nav.scss";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar navbar-light bg-dark mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<span style={{}} className="navbar-brand img-fluid mb-0 h1 p-3">
+					{" "}
+					<img src="http://pngimg.com/uploads/star_wars_logo/star_wars_logo_PNG32.png" alt="Star Wars Logo" />
+				</span>
 			</Link>
 			<div className="ml-auto">
 				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+					<div className="dropdown">
+						<button
+							className="btn btn-secondary dropdown-toggle"
+							type="button"
+							id="dropdownMenuButton"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
+							Dropdown button
+						</button>
+						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{store.favorites.map((favorite, i) => (
+								<a key={i} className="dropdown-item" href="#">
+									{favorite.name}
+								</a>
+							))}
+						</div>
+					</div>
 				</Link>
 			</div>
 		</nav>
