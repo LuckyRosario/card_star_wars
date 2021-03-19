@@ -6,6 +6,7 @@ import "../../styles/nav.scss";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<nav className="navbar navbar-light bg-dark mb-3">
 			<Link to="/">
@@ -15,26 +16,31 @@ export const Navbar = () => {
 				</span>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
-					<div className="dropdown">
-						<button
-							className="btn btn-secondary dropdown-toggle"
-							type="button"
-							id="dropdownMenuButton"
-							data-toggle="dropdown"
-							aria-haspopup="true"
-							aria-expanded="false">
-							Dropdown button
-						</button>
-						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							{store.favorites.map((favorite, i) => (
+				<div className="dropdown">
+					<button
+						className="btn btn-secondary dropdown-toggle"
+						type="button"
+						id="dropdownMenuButton"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						Favorites List
+					</button>
+					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						{store.favorites.map((favorite, i) => (
+							<>
 								<a key={i} className="dropdown-item" href="#">
 									{favorite.name}
 								</a>
-							))}
-						</div>
+								<button
+									className="delete btn btn-outline-secondary btn-sm"
+									onClick={() => actions.deleteButton(i)}>
+									<i className="fas fa-trash" />
+								</button>
+							</>
+						))}
 					</div>
-				</Link>
+				</div>
 			</div>
 		</nav>
 	);

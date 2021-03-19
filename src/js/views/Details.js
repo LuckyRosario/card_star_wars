@@ -11,7 +11,7 @@ export const Details = props => {
 	return (
 		<>
 			{store.characters[params.i] && (
-				<div>
+				<div className="container">
 					<h1>{store.characters[params.i].name}</h1>
 					<h2>{store.characters[params.i].birth_year}</h2>
 					<h2>{store.characters[params.i].height}</h2>

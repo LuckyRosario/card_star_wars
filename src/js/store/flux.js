@@ -15,9 +15,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			characters: [],
 			planets: [],
-			favorites: []
+			favorites: [],
+			quotes: [
+				"You'll Find I'm Full Of Surprises.",
+				"R2D2, You Know Better Than To Trust A Strange Computer!",
+				"Bleep, Bloop, Beep, Boop, Beep",
+				"Be careful not to choke on your aspirations.",
+				"Why, you stuck-up, half-witted, scruffy-looking nerf herder!",
+				"I'm not stupid, Kenobi. Just because I haven't flown across the galaxy like you have doesn't make me some sort of ignorant hick.",
+				"I think my teacher was wrong: making cheese wasn't what I was born to do. I was born to make people feel good when everything around them seemed just awful.",
+				"I'm not lazy, I just have a bad motivator",
+				"Don't get too cocky, Skyboy.",
+				"If you strike me down, I shall become more powerful than you can possibly imagine"
+			]
 		},
 		actions: {
+			deleteButton: i => {
+				let store = getStore();
+				let updatedList = store.favorites.filter((favorite, index) => index !== i);
+				setStore({ favorites: updatedList });
+			},
 			// Use getActions to call a function within a fuction
 			addItem: object => {
 				let store = getStore();
