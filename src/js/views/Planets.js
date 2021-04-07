@@ -12,14 +12,12 @@ export const Planets = props => {
 		<>
 			{store.planets[params.i] && (
 				<div className="container">
-					<h1>{store.planets[params.i].rotation_name}</h1>
 					<h1>{store.planets[params.i].rotation_period}</h1>
 					<h2>{store.planets[params.i].orbital_period}</h2>
 					<h2>{store.planets[params.i].climate}</h2>
 					<h2>{store.planets[params.i].population}</h2>
 					<h2>{store.planets[params.i].gravity}</h2>
 					<h2>{store.planets[params.i].terrain}</h2>
-					<h2>{store.planets[params.i].skin_color}</h2>
 				</div>
 			)}
 		</>

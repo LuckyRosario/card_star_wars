@@ -30,6 +30,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			login: userCredentials => {
+				fetch("https://3000-black-junglefowl-nnlldunc.ws-us03.gitpod.io/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						body: JSON.stringify(userCredentials)
+					}
+				})
+					.then(reponse => response.json())
+					.then(data => {
+						localStorage.setItem("token", data);
+					})
+					.catch(error => console.log(error));
+			},
 			deleteButton: i => {
 				let store = getStore();
 				let updatedList = store.favorites.filter((favorite, index) => index !== i);
