@@ -9,8 +9,8 @@ export const Login = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		actions.login({
-			user,
-			password
+			username: user,
+			password: password
 		});
 	};
 	return (

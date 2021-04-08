@@ -31,14 +31,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			login: userCredentials => {
+				console.log(userCredentials);
 				fetch("https://3000-black-junglefowl-nnlldunc.ws-us03.gitpod.io/login", {
 					method: "POST",
 					headers: {
-						"Content-Type": "application/json",
-						body: JSON.stringify(userCredentials)
-					}
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(userCredentials)
 				})
-					.then(reponse => response.json())
+					.then(response => response.json())
 					.then(data => {
 						localStorage.setItem("token", data);
 					})
